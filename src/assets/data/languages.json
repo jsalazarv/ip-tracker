@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Español",
+    "level": "Nativo",
+    "flag": "https://flagcdn.com/w80/mx.png"
+  },
+  {
+    "id": 2,
+    "name": "Inglés",
+    "level": "Técnico",
+    "flag": "https://flagcdn.com/w80/us.png"
+  }
+]

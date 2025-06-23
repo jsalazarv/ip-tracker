@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "title": "Especialista en Desarrollo De Sistemas",
+      "date": {
+        "start": "Ene 2021",
+        "end": "Ene 2022"
+      },
+      "institute": {
+        "name": "CUDEC Universidad Multicultural",
+        "url": "",
+        "logo": "https://universidadcudec.com/wp-content/uploads/2023/06/logo-universidad-multicultural-1.png"
+      },
+      "description": ""
+    },
+    {
+      "id": 2,
+      "title": "Ingeniero en Computación",
+      "date": {
+        "start": "Jun 2012",
+        "end": "Jun 2017"
+      },
+      "institute": {
+        "name": "UAEM Valle de México",
+        "url": "",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Logo_de_la_UAEMex.svg/1200px-Logo_de_la_UAEMex.svg.png"
+      },
+      "description": ""
+    }
+]

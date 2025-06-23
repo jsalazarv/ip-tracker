@@ -1,0 +1,89 @@
+[
+    {
+      "id": 1,
+      "title": "Full Stack Developer",
+      "date": {
+        "start": "Sep 2022",
+        "end": "Actualmente"
+      },
+      "company": {
+        "name": "Ixaya",
+        "url": "https://www.ixaya.com/",
+        "logo": "https://www.ixaya.com/assets/logo_ixaya.png"
+      },
+      "description": {
+        "bulletPoints": [
+          "Desarrollo e integración de interfaces dinámicas utilizando Vue/Nuxt y React/Next, con enfoque en componentes reutilizables, rendimiento y escalabilidad.",
+          "Implementación de lógica de negocio en TypeScript, asegurando tipado estricto y reducción de errores en tiempo de desarrollo.",
+          "Construcción de APIs y servicios backend en PHP, integrados al frontend mediante fetch/axios y control de estado.",
+          "Aplicación de Tailwind CSS y Bootstrap para crear interfaces modernas, adaptables y consistentes, maximizando la velocidad de prototipado.",
+          "Control de versiones y flujos colaborativos usando Git y ramas feature."
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "title": "Frontend Developer",
+      "date": {
+        "start": "Sep 2021",
+        "end": "Sep 2022"
+      },
+      "company": {
+        "name": "Pemex",
+        "url": "https://www.pemex.com/Paginas/default.aspx",
+        "logo": "https://raw.githubusercontent.com/mxabierto/assets/master/img/logos/pemex.png"
+      },
+      "description": {
+        "bulletPoints": [
+          "Desarrollo de módulos frontend con Vue 3 y Vuetify, enfocados en formularios complejos y tablas dinámicas para la gestión de personal.",
+          "Uso de TypeScript para asegurar integridad de datos y facilitar mantenibilidad del código a largo plazo.",
+          "Consumo e integración de servicios backend en .NET, con enfoque en sincronización de datos en tiempo real.",
+          "Apoyo en prototipado rápido de pantallas con AdobeXD, transformándolos en componentes funcionales y responsivos.",
+          "Gestión de versiones y despliegues mediante flujos organizados en Git."
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "title": "Full Stack Developer",
+      "date": {
+        "start": "Ene 2019",
+        "end": "Sep 2021"
+      },
+      "company": {
+        "name": "AdAcosta",
+        "url": "https://www.adacosta.com.mx/",
+        "logo": "https://www.adacosta.com.mx/es/images/logo.png"
+      },
+      "description": {
+        "bulletPoints": [
+          "Conversión de diseños en Photoshop y Sketch a componentes Vue/React, adaptadas a las necesidades de cada cliente.",
+          "Integración de sitios con gestores de contenido como Wordpress y Prestashop y adaptación de temas.",
+          "Desarrollo de APIs utilizando PHP, Laravel y Lumen.",
+          "Gestión de versiones con Git."
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "title": "Full Stack Developer",
+      "date": {
+        "start": "Jun 2017",
+        "end": "Ene 2019"
+      },
+      "company": {
+        "name": "Valuad",
+        "url": "https://valuad.mx/",
+        "logo": "https://valuad.mx/wp-content/uploads/2022/12/img_logo-footer.png"
+      },
+      "description": {
+        "bulletPoints": [
+          "Desarrollo completo de sistemas utilizando frameworks como Laravel, Lumen, CodeIgniter para el backend y Vue, React y Vanilla Javascript para el frontend.",
+          "Construcción de APIs y su consumo en el frontend mediante Axios y Fetch.",
+          "Diseño e implementación de interfaces UI de forma modular.",
+          "Gestión de proyectos en Git y colaboración directa con diseñadores UX/UI para validar y aplicar flujos centrados en el usuario.",
+          "Mantenimiento y personalización de sitios Wordpress y Prestashop incluyendo plugins y adaptación de temas."
+        ]
+      }
+    }
+]

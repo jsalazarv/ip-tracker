@@ -1,0 +1,56 @@
+{
+  "technologies": [
+    {
+      "name": "React",
+      "logo": "/images/technologies/react.svg"
+    },
+    {
+      "name": "TypeScript",
+      "logo": "/images/technologies/typescript.svg"
+    },
+    {
+      "name": "JavaScript",
+      "logo": "/images/technologies/javascript.svg"
+    },
+    {
+      "name": "Node.js",
+      "logo": "/images/technologies/nodejs.svg"
+    },
+    {
+      "name": "Python",
+      "logo": "/images/technologies/python.svg"
+    },
+    {
+      "name": "Angular",
+      "logo": "/images/technologies/angular.svg"
+    },
+    {
+      "name": "Vue",
+      "logo": "/images/technologies/vue.svg"
+    },
+    {
+      "name": "PHP",
+      "logo": "/images/technologies/php.svg"
+    },
+    {
+      "name": "Laravel",
+      "logo": "/images/technologies/laravel.svg"
+    },
+    {
+      "name": "Express.js",
+      "logo": "/images/technologies/expressjs.svg"
+    },
+    {
+      "name": "Tailwind CSS",
+      "logo": "/images/technologies/tailwindcss.svg"
+    },
+    {
+      "name": "HTML5",
+      "logo": "/images/technologies/html5.svg"
+    },
+    {
+      "name": "CSS3",
+      "logo": "/images/technologies/css.svg"
+    }
+  ]
+}
