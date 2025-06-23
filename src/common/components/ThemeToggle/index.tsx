@@ -1,4 +1,4 @@
-import useTheme from '@common/hooks/useTheme';
+import useTheme from '@common/hooks/features/useTheme';
 import { MoonStars, Sun } from '@phosphor-icons/react';
 
 export default function ThemeToggle() {
