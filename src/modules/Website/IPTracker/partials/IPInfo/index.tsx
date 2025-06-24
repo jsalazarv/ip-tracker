@@ -156,7 +156,7 @@ export default function IPInfo({ data, isLoading, onClose }: IPInfoProps) {
 
         <div className="w-full grid grid-cols-4 gap-4 mt-4">
           {existingRecord && (
-            <div className="col-span-2 btn w-full bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+            <div className="col-span-2 btn w-full bg-blue-0 dark:bg-blue-900/30 rounded-lg">
               <p className="text-sm text-blue-600 dark:text-blue-400">
                 ℹ️ Esta IP ya está guardada en el historial
               </p>
