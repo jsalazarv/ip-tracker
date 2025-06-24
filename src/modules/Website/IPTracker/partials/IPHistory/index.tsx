@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useIPRecords } from '@common/hooks/api/useIPRecords';
 import Accordion from '@common/components/Accordion';
 import { EmptyState } from '@common/components/EmptyState';
@@ -8,6 +9,7 @@ interface IPHistoryProps {
 }
 
 export default function IPHistory({ onSelect }: IPHistoryProps) {
+  const { t } = useTranslation();
   const { records, isLoading: isLoadingRecords, deleteRecord } = useIPRecords();
   const [searchTerm, setSearchTerm] = useState('');
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
@@ -25,10 +27,12 @@ export default function IPHistory({ onSelect }: IPHistoryProps) {
   return (
     <div>
       <div className="flex items-center justify-between mb-5">
-        <h2 className="text-lg font-semibold">Historial de IPs</h2>
+        <h2 className="text-lg font-semibold">
+          {t('ipTracker.history.title')}
+        </h2>
         <input
           type="text"
-          placeholder="Filtrar por IP, ciudad o país..."
+          placeholder={t('ipTracker.history.filterPlaceholder')}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="form-input w-48 text-sm rounded-lg border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:border-blue-500 focus:ring-blue-500"
@@ -71,14 +75,14 @@ export default function IPHistory({ onSelect }: IPHistoryProps) {
               <div className="grid grid-cols-2 gap-4 mt-4">
                 <div>
                   <span className="text-sm text-slate-500 dark:text-slate-400">
-                    Type:
+                    {t('ipTracker.history.details.type')}:
                   </span>
                   <p className="text-sm text-slate-600 dark:text-slate-300">
                     {record.type}
                   </p>
 
                   <span className="text-sm text-slate-500 dark:text-slate-400">
-                    ISP:
+                    {t('ipTracker.history.details.isp')}:
                   </span>
                   <p className="text-sm text-slate-600 dark:text-slate-300">
                     {record.isp}
@@ -87,14 +91,14 @@ export default function IPHistory({ onSelect }: IPHistoryProps) {
 
                 <div>
                   <span className="text-sm text-slate-500 dark:text-slate-400">
-                    Country code:
+                    {t('ipTracker.history.details.countryCode')}:
                   </span>
                   <p className="text-sm text-slate-600 dark:text-slate-300">
                     {record.country_code}
                   </p>
 
                   <span className="text-sm text-slate-500 dark:text-slate-400">
-                    Coordinates:
+                    {t('ipTracker.history.details.coordinates')}:
                   </span>
                   <p className="text-sm text-slate-600 dark:text-slate-300">
                     lat: {record.latitude.toFixed(2)}° / lon:{' '}
@@ -106,7 +110,7 @@ export default function IPHistory({ onSelect }: IPHistoryProps) {
               {record.is_threat && (
                 <div className="mt-4 p-3 bg-red-50 dark:bg-red-900/30 rounded-lg">
                   <p className="text-sm text-red-600 dark:text-red-400">
-                    ⚠️ Esta IP ha sido marcada como amenaza
+                    {t('ipTracker.history.threatWarning')}
                   </p>
                 </div>
               )}
@@ -115,21 +119,21 @@ export default function IPHistory({ onSelect }: IPHistoryProps) {
                 <button
                   onClick={() => deleteRecord(record.id)}
                   className="col-span-2 col-start-3 btn w-full text-slate-900 dark:text-slate-200 bg-white dark:bg-slate-900 border-slate-200 hover:border-slate-300 dark:border-slate-800 dark:hover:border-slate-700 shadow shadow-black/5 hover:bg-red-400 hover:text-white dark:hover:bg-red-500 dark:hover:text-white">
-                  Eliminar registro
+                  {t('ipTracker.history.deleteRecord')}
                 </button>
               </div>
             </Accordion>
           ))}
         </div>
       ) : (
-        <div className="p-6 h-full flex items-center justify-center">
+        <div className="p-6 w-full h-full flex items-center justify-center">
           <EmptyState
             title={
               searchTerm
-                ? 'No se encontraron registros que coincidan con la búsqueda'
-                : 'No hay registros guardados aún'
+                ? t('ipTracker.history.empty.noResults')
+                : t('ipTracker.history.empty.noRecords')
             }
-            subtitle="Puedes realizar una búsqueda para guardar un registro"
+            subtitle={t('ipTracker.history.empty.subtitle')}
           />
         </div>
       )}

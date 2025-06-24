@@ -1,0 +1,55 @@
+{
+  "common": {
+    "search": "Search",
+    "delete": "Delete",
+    "close": "Close"
+  },
+  "ipTracker": {
+    "title": "IP Tracker",
+    "finder": {
+      "placeholder": "Search IP address"
+    },
+    "info": {
+      "title": "IP Information",
+      "ipAddress": "IP Address",
+      "location": "Location",
+      "timezone": "Timezone",
+      "isp": "ISP",
+      "type": "Type",
+      "ipType": "IP Type",
+      "provider": "Provider (ISP)",
+      "countryCode": "Country Code",
+      "coordinates": "Coordinates",
+      "security": {
+        "title": "Security",
+        "proxy": "Proxy",
+        "tor": "Tor",
+        "vpn": "VPN",
+        "threatsDetected": "Threats Detected"
+      },
+      "yes": "Yes",
+      "no": "No"
+    },
+    "history": {
+      "title": "IP History",
+      "filterPlaceholder": "Filter by IP, city or country...",
+      "empty": {
+        "noRecords": "No records saved yet",
+        "noResults": "No records found matching your search",
+        "subtitle": "You can perform a search to save a record"
+      },
+      "deleteRecord": "Delete record",
+      "threatWarning": "⚠️ This IP has been marked as a threat",
+      "details": {
+        "country": "Country",
+        "region": "Region",
+        "city": "City",
+        "postalCode": "Postal Code",
+        "type": "Type",
+        "isp": "ISP",
+        "countryCode": "Country Code",
+        "coordinates": "Coordinates"
+      }
+    }
+  }
+}
