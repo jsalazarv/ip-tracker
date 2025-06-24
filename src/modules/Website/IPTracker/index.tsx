@@ -2,6 +2,7 @@ import ThemeToggle from '@common/components/ThemeToggle';
 import Accordion from '@common/components/Accordion';
 import Map from './partials/Map';
 import Finder from './partials/Finder';
+import IPInfo from './partials/IPInfo';
 import { useIP } from '@common/hooks/api/useIP';
 import { useState } from 'react';
 
@@ -13,7 +14,7 @@ export default function IPTracker() {
     setSearchIP(ip);
   };
 
-  const { data, error } = getIP(searchIP);
+  const { data, error, isLoading } = getIP(searchIP);
   const coordinates = data?.data?.location;
   const ip = data?.data?.ip;
 
@@ -63,6 +64,10 @@ export default function IPTracker() {
         </div>
       </div>
       <div className="col-span-2 md:col-span-1 p-5 flex-1 lg:max-h-screen">
+        <div className="mb-5">
+          <IPInfo data={data?.data} isLoading={isLoading} />
+        </div>
+
         <h2 className="text-lg font-semibold mb-5">IP List</h2>
         <div className="space-y-3">
           {ips.map((ip, index) => (
@@ -76,7 +81,7 @@ export default function IPTracker() {
           ))}
         </div>
       </div>
-      <div className="col-span-2 md:col-span-1 bg-slate-900 flex-1 lg:rounded-l-[2rem] lg:max-h-screen overflow-hidden">
+      <div className="col-span-2 md:col-span-1 bg-slate-900 flex-1 lg:rounded-l-[2rem] min-h-[350px] lg:max-h-screen overflow-hidden">
         <Map coordinates={coordinates} ip={ip} error={error?.message} />
       </div>
     </div>
