@@ -32,7 +32,7 @@
 /* Buttons */
 .btn,
 .btn-sm {
-    @apply font-aspekta text-sm font-medium inline-flex items-center justify-center rounded-full leading-5 whitespace-nowrap transition duration-150 ease-in-out;
+    @apply font-aspekta text-sm font-medium inline-flex items-center justify-center rounded-md leading-5 whitespace-nowrap transition duration-150 ease-in-out;
 }
 
 .btn {
@@ -64,7 +64,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .form-textarea,
 .form-multiselect,
 .form-select {
-    @apply text-sm px-3 py-2 rounded-full;
+    @apply text-sm px-3 py-2 rounded-lg;
 }
 
 .form-input,
