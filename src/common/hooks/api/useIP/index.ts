@@ -4,10 +4,11 @@ import { IPService } from '@common/services/IPService';
 export function useIP() {
   const { getIPService } = IPService();
 
-  const getIP = () => {
+  const getIP = (ip?: string) => {
     return useQuery({
-      queryKey: ['ip'],
-      queryFn: () => getIPService(),
+      queryKey: ['ip', ip],
+      queryFn: () => getIPService(ip),
+      enabled: !!ip,
     });
   };
 

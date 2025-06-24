@@ -4,7 +4,7 @@ const { createExternalClient } = useAxios();
 
 export const IPService = () => {
   return {
-    async getIPService() {
+    async getIPService(ip?: string) {
       const client = createExternalClient({
         baseURL: import.meta.env.VITE_APP_GEO_LOCATION_URL,
         headers: {
@@ -13,7 +13,7 @@ export const IPService = () => {
         },
       });
 
-      const response = await client.get('/ip/37.140.128.10');
+      const response = await client.get(`/ip/${ip}`);
       return response;
     },
   };

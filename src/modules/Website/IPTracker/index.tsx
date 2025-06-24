@@ -1,10 +1,21 @@
 import ThemeToggle from '@common/components/ThemeToggle';
 import Accordion from '@common/components/Accordion';
 import Map from './partials/Map';
+import Finder from './partials/Finder';
 import { useIP } from '@common/hooks/api/useIP';
+import { useState } from 'react';
 
 export default function IPTracker() {
   const { getIP } = useIP();
+  const [searchIP, setSearchIP] = useState<string>();
+
+  const handleSearch = (ip: string) => {
+    setSearchIP(ip);
+  };
+
+  const { data } = getIP(searchIP);
+  const coordinates = data?.data?.location;
+  const ip = data?.data?.ip;
 
   const ips = [
     {
@@ -34,10 +45,6 @@ export default function IPTracker() {
     },
   ];
 
-  const { data } = getIP();
-  const coordinates = data?.data?.location;
-  const ip = data?.data?.ip;
-
   return (
     <div className="grid grid-cols-2 min-h-screen grid-rows-[auto_1fr]">
       <div className="col-span-2 p-5 border-b border-slate-200 dark:border-slate-800">
@@ -47,19 +54,7 @@ export default function IPTracker() {
               <h1>IP Tracker</h1>
             </div>
           </div>
-          <form className="col-span-4 md:col-span-2 order-3 md:order-2">
-            <div className="space-y-4">
-              <div>
-                <input
-                  id="client"
-                  className="form-input w-full disabled:bg-slate-100 dark:disabled:bg-slate-800 disabled:text-slate-500 dark:disabled:text-slate-400 disabled:cursor-not-allowed disabled:shadow-none"
-                  type="text"
-                  placeholder="Buscar dirección IP"
-                  required
-                />
-              </div>
-            </div>
-          </form>
+          <Finder onSearch={handleSearch} />
           <div className="col-span-2 md:col-span-1 order-2 md:order-3">
             <div className="flex items-center justify-end h-full">
               <ThemeToggle />
