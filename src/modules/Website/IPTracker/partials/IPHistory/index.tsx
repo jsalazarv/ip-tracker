@@ -2,9 +2,14 @@ import { useState } from 'react';
 import { useIPRecords } from '@common/hooks/api/useIPRecords';
 import Accordion from '@common/components/Accordion';
 
-export default function IPHistory() {
+interface IPHistoryProps {
+  onSelect: (ip: string) => void;
+}
+
+export default function IPHistory({ onSelect }: IPHistoryProps) {
   const { records, isLoading: isLoadingRecords, deleteRecord } = useIPRecords();
   const [searchTerm, setSearchTerm] = useState('');
+  const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
 
   const sortedRecords = [...records].sort((a, b) => b.id.localeCompare(a.id));
   const filteredRecords = sortedRecords.filter((record) => {
@@ -49,7 +54,6 @@ export default function IPHistory() {
               key={record.id}
               id={record.id}
               title={record.ip}
-              active={false}
               location={{
                 city: record.city,
                 country: record.country,
@@ -57,16 +61,22 @@ export default function IPHistory() {
                 latitude: record.latitude,
                 longitude: record.longitude,
               }}
+              onClick={() => {
+                onSelect(record.ip);
+                setActiveAccordion(record.id);
+              }}
+              active={activeAccordion === record.id}
               className="bg-gradient-to-tr from-slate-100 to-slate-50 dark:from-slate-800/80 dark:to-slate-900 rounded-lg p-4 shadow-sm">
               <div className="grid grid-cols-2 gap-4 mt-4">
                 <div>
                   <span className="text-sm text-slate-500 dark:text-slate-400">
-                    IP Type:
+                    Type:
                   </span>
                   <p className="text-sm text-slate-600 dark:text-slate-300">
                     {record.type}
                   </p>
-                  <span className="text-sm text-slate-500 dark:text-slate-400 mt-4 block">
+
+                  <span className="text-sm text-slate-500 dark:text-slate-400">
                     ISP:
                   </span>
                   <p className="text-sm text-slate-600 dark:text-slate-300">

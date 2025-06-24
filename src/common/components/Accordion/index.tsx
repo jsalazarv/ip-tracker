@@ -13,6 +13,7 @@ type AccordionProps = {
     latitude: number;
     longitude: number;
   };
+  onClick?: () => void;
 };
 
 export default function Accordion({
@@ -22,12 +23,13 @@ export default function Accordion({
   active = false,
   className,
   location,
+  onClick,
 }: AccordionProps) {
   const [accordionOpen, setAccordionOpen] = useState<boolean>(false);
 
   useEffect(() => {
     setAccordionOpen(active);
-  }, []);
+  }, [active]);
 
   return (
     <div
@@ -41,6 +43,7 @@ export default function Accordion({
           onClick={(e) => {
             e.preventDefault();
             setAccordionOpen(!accordionOpen);
+            onClick?.();
           }}
           aria-expanded={accordionOpen}
           aria-controls={`accordion-text-${id}`}>

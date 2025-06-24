@@ -22,12 +22,13 @@ export default function Finder({ onSearch }: FinderProps) {
         <div>
           <input
             id="client"
-            className="form-input w-full disabled:bg-slate-100 dark:disabled:bg-slate-800 disabled:text-slate-500 dark:disabled:text-slate-400 disabled:cursor-not-allowed disabled:shadow-none"
+            className="form-input w-full text-sm rounded-lg border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:border-blue-500 focus:ring-blue-500"
             type="text"
             placeholder="Buscar dirección IP"
             value={ipAddress}
             onChange={(e) => setIpAddress(e.target.value)}
             required
+            autoComplete="off"
           />
         </div>
       </div>

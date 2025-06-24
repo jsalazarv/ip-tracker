@@ -43,7 +43,7 @@ interface IPInfoProps {
 }
 
 export default function IPInfo({ data, isLoading, onClose }: IPInfoProps) {
-  const { records, saveRecord } = useIPRecords();
+  const { records = [], saveRecord = () => {} } = useIPRecords();
 
   const existingRecord = useMemo(() => {
     if (!data?.ip) return null;
@@ -51,7 +51,7 @@ export default function IPInfo({ data, isLoading, onClose }: IPInfoProps) {
   }, [data?.ip, records]);
 
   const handleSave = () => {
-    if (!data) return;
+    if (!data || !saveRecord) return;
 
     const ipData: IPData = {
       ip: data.ip,
@@ -76,6 +76,7 @@ export default function IPInfo({ data, isLoading, onClose }: IPInfoProps) {
     };
 
     saveRecord(ipData);
+    onClose?.();
   };
 
   if (isLoading) {

@@ -12,31 +12,39 @@ interface MapProps {
   coordinates?: Coordinates;
   ip?: string;
   error?: string;
+  centerOnUser?: boolean;
 }
 
 function MapUpdater({
   coordinates,
   userLocation,
   hasError,
+  centerOnUser,
 }: {
   coordinates?: Coordinates;
   userLocation?: Coordinates;
   hasError?: boolean;
+  centerOnUser?: boolean;
 }) {
   const map = useMap();
 
   useEffect(() => {
-    if (hasError && userLocation) {
+    if ((hasError || centerOnUser) && userLocation) {
       map.setView([userLocation.latitude, userLocation.longitude], 13);
     } else if (coordinates) {
       map.setView([coordinates.latitude, coordinates.longitude], 13);
     }
-  }, [coordinates, userLocation, hasError, map]);
+  }, [coordinates, userLocation, hasError, centerOnUser, map]);
 
   return null;
 }
 
-export default function Map({ coordinates, ip, error: apiError }: MapProps) {
+export default function Map({
+  coordinates,
+  ip,
+  error: apiError,
+  centerOnUser,
+}: MapProps) {
   const { coordinates: userLocation, error: geoError } = useGeolocation();
 
   useEffect(() => {
@@ -68,6 +76,7 @@ export default function Map({ coordinates, ip, error: apiError }: MapProps) {
           coordinates={coordinates}
           userLocation={userLocation}
           hasError={!!apiError}
+          centerOnUser={centerOnUser}
         />
         <TileLayer
           attribution="&copy; OpenStreetMap"
