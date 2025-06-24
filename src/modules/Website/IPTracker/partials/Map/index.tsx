@@ -1,6 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { useEffect } from 'react';
 import { useGeolocation } from '@common/hooks/features/useGeolocation';
+import { toast } from 'react-toastify';
 
 interface Coordinates {
   latitude: number;
@@ -10,27 +11,44 @@ interface Coordinates {
 interface MapProps {
   coordinates?: Coordinates;
   ip?: string;
+  error?: string;
 }
 
-function MapUpdater({ coordinates }: { coordinates?: Coordinates }) {
+function MapUpdater({
+  coordinates,
+  userLocation,
+  hasError,
+}: {
+  coordinates?: Coordinates;
+  userLocation?: Coordinates;
+  hasError?: boolean;
+}) {
   const map = useMap();
 
   useEffect(() => {
-    if (coordinates) {
+    if (hasError && userLocation) {
+      map.setView([userLocation.latitude, userLocation.longitude], 13);
+    } else if (coordinates) {
       map.setView([coordinates.latitude, coordinates.longitude], 13);
     }
-  }, [coordinates, map]);
+  }, [coordinates, userLocation, hasError, map]);
 
   return null;
 }
 
-export default function Map({ coordinates, ip }: MapProps) {
-  const { coordinates: userLocation, error } = useGeolocation();
+export default function Map({ coordinates, ip, error: apiError }: MapProps) {
+  const { coordinates: userLocation, error: geoError } = useGeolocation();
+
+  useEffect(() => {
+    if (apiError && userLocation) {
+      toast.error(apiError);
+    }
+  }, [apiError, userLocation]);
 
   if (!coordinates && !userLocation) {
     return (
       <div className="flex items-center justify-center h-full">
-        <p className="text-white">{error || 'Obteniendo ubicación...'}</p>
+        <p className="text-white">{geoError || 'Obteniendo ubicación...'}</p>
       </div>
     );
   }
@@ -46,7 +64,11 @@ export default function Map({ coordinates, ip }: MapProps) {
         zoom={coordinates ? 13 : 3}
         scrollWheelZoom={true}
         className="h-full w-full">
-        <MapUpdater coordinates={coordinates} />
+        <MapUpdater
+          coordinates={coordinates}
+          userLocation={userLocation}
+          hasError={!!apiError}
+        />
         <TileLayer
           attribution="&copy; OpenStreetMap"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

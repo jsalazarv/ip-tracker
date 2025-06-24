@@ -7,8 +7,15 @@ export function useIP() {
   const getIP = (ip?: string) => {
     return useQuery({
       queryKey: ['ip', ip],
-      queryFn: () => getIPService(ip),
+      queryFn: async () => {
+        const response = await getIPService(ip);
+        if (response.data.status === 'failed') {
+          throw new Error(response.data.error.message);
+        }
+        return response;
+      },
       enabled: !!ip,
+      retry: false,
     });
   };
 

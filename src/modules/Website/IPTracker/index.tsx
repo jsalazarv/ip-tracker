@@ -13,7 +13,7 @@ export default function IPTracker() {
     setSearchIP(ip);
   };
 
-  const { data } = getIP(searchIP);
+  const { data, error } = getIP(searchIP);
   const coordinates = data?.data?.location;
   const ip = data?.data?.ip;
 
@@ -77,7 +77,7 @@ export default function IPTracker() {
         </div>
       </div>
       <div className="col-span-2 md:col-span-1 bg-slate-900 flex-1 lg:rounded-l-[2rem] lg:max-h-screen overflow-hidden">
-        <Map coordinates={coordinates} ip={ip} />
+        <Map coordinates={coordinates} ip={ip} error={error?.message} />
       </div>
     </div>
   );
