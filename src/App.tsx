@@ -5,6 +5,7 @@ import '@assets/css/style.css';
 import { LayoutProvider } from '@common/providers/LayoutProvider';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import IPTracker from './modules/Website/IPTracker';
 
 function App() {
   const queryClient = new QueryClient();
@@ -13,6 +14,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <LayoutProvider>
         <RouterProvider router={router} />
+        <IPTracker />
         <ToastContainer
           position="top-right"
           autoClose={3000}
