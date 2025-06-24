@@ -1,15 +1,15 @@
-import ThemeToggle from '@common/components/ThemeToggle';
-import Accordion from '@common/components/Accordion';
-import Map from './partials/Map';
-import Finder from './partials/Finder';
-import IPInfo from './partials/IPInfo';
-import { useIP } from '@common/hooks/api/useIP';
 import { useState } from 'react';
+import { useIP } from '@common/hooks/api/useIP';
+import Finder from './partials/Finder';
+import Map from './partials/Map';
+import IPInfo from './partials/IPInfo';
+import IPHistory from './partials/IPHistory';
+import ThemeToggle from '@common/components/ThemeToggle';
 
 export default function IPTracker() {
   const { getIP } = useIP();
   const [searchIP, setSearchIP] = useState<string>();
-
+  const [finderKey, setFinderKey] = useState(0);
   const handleSearch = (ip: string) => {
     setSearchIP(ip);
   };
@@ -18,33 +18,10 @@ export default function IPTracker() {
   const coordinates = data?.data?.location;
   const ip = data?.data?.ip;
 
-  const ips = [
-    {
-      title: '192.168.1.1',
-      text: 'Ubicación: Ciudad de México, México\nISP: Telmex\nZona Horaria: UTC-6\nDominio: router.local',
-      active: false,
-    },
-    {
-      title: '8.8.8.8',
-      text: 'Ubicación: Mountain View, California, USA\nISP: Google LLC\nZona Horaria: UTC-7\nDominio: dns.google',
-      active: false,
-    },
-    {
-      title: '104.26.10.229',
-      text: 'Ubicación: San Francisco, California, USA\nISP: Cloudflare, Inc.\nZona Horaria: UTC-7\nDominio: cloudflare.com',
-      active: false,
-    },
-    {
-      title: '157.240.22.35',
-      text: 'Ubicación: Dublin, Irlanda\nISP: Facebook, Inc.\nZona Horaria: UTC+1\nDominio: facebook.com',
-      active: false,
-    },
-    {
-      title: '13.33.141.38',
-      text: 'Ubicación: Ashburn, Virginia, USA\nISP: Amazon Technologies Inc.\nZona Horaria: UTC-4\nDominio: aws.amazon.com',
-      active: false,
-    },
-  ];
+  const handleClose = () => {
+    setSearchIP(undefined);
+    setFinderKey((prev) => prev + 1);
+  };
 
   return (
     <div className="grid grid-cols-2 min-h-screen grid-rows-[auto_1fr]">
@@ -55,7 +32,7 @@ export default function IPTracker() {
               <h1>IP Tracker</h1>
             </div>
           </div>
-          <Finder onSearch={handleSearch} />
+          <Finder key={finderKey} onSearch={handleSearch} />
           <div className="col-span-2 md:col-span-1 order-2 md:order-3">
             <div className="flex items-center justify-end h-full">
               <ThemeToggle />
@@ -65,21 +42,14 @@ export default function IPTracker() {
       </div>
       <div className="col-span-2 md:col-span-1 p-5 flex-1 lg:max-h-screen">
         <div className="mb-5">
-          <IPInfo data={data?.data} isLoading={isLoading} />
+          <IPInfo
+            data={data?.data}
+            isLoading={isLoading}
+            onClose={handleClose}
+          />
         </div>
 
-        <h2 className="text-lg font-semibold mb-5">IP List</h2>
-        <div className="space-y-3">
-          {ips.map((ip, index) => (
-            <Accordion
-              key={index}
-              title={ip.title}
-              id={`ip-${index}`}
-              active={ip.active}>
-              {ip.text}
-            </Accordion>
-          ))}
-        </div>
+        <IPHistory />
       </div>
       <div className="col-span-2 md:col-span-1 bg-slate-900 flex-1 lg:rounded-l-[2rem] min-h-[350px] lg:max-h-screen overflow-hidden">
         <Map coordinates={coordinates} ip={ip} error={error?.message} />

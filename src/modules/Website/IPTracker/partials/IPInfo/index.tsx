@@ -1,3 +1,5 @@
+import { useIPRecords } from '@common/hooks/api/useIPRecords';
+
 interface IPInfoProps {
   data?: {
     ip: string;
@@ -26,9 +28,12 @@ interface IPInfoProps {
     };
   };
   isLoading?: boolean;
+  onClose?: () => void;
 }
 
-export default function IPInfo({ data, isLoading }: IPInfoProps) {
+export default function IPInfo({ data, isLoading, onClose }: IPInfoProps) {
+  const { saveRecord } = useIPRecords();
+
   if (isLoading) {
     return (
       <div className="animate-pulse space-y-3">
@@ -107,16 +112,17 @@ export default function IPInfo({ data, isLoading }: IPInfoProps) {
 
         <div className="w-full grid grid-cols-2 gap-4 mt-4">
           <div className="col-start-1 md:col-start-2 col-span-2 flex w-full justify-end gap-4">
-            <a
-              className="btn w-full text-slate-900 dark:text-slate-200 bg-white dark:bg-slate-900 border-slate-200 hover:border-slate-300 dark:border-slate-800 dark:hover:border-slate-700 shadow shadow-black/5 hover:bg-red-400 hover:text-white dark:hover:bg-red-500 dark:hover:text-white"
-              href="/contact">
+            <button
+              onClick={onClose}
+              className="btn w-full text-slate-900 dark:text-slate-200 bg-white dark:bg-slate-900 border-slate-200 hover:border-slate-300 dark:border-slate-800 dark:hover:border-slate-700 shadow shadow-black/5 hover:bg-red-400 hover:text-white dark:hover:bg-red-500 dark:hover:text-white">
               Descartar
-            </a>
-            <a
-              className="btn w-full text-white bg-blue-500 hover:bg-blue-600 shadow shadow-black/5 animate-shine bg-[linear-gradient(100deg,theme(colors.blue.500),45%,theme(colors.blue.400),55%,theme(colors.blue.500))] bg-[size:200%_100%] hover:bg-[image:none]"
-              href="/pay">
+            </button>
+            <button
+              onClick={() => data && saveRecord(data)}
+              disabled={!data}
+              className="btn w-full text-white bg-blue-500 hover:bg-blue-600 shadow shadow-black/5 animate-shine bg-[linear-gradient(100deg,theme(colors.blue.500),45%,theme(colors.blue.400),55%,theme(colors.blue.500))] bg-[size:200%_100%] hover:bg-[image:none] disabled:opacity-50 disabled:cursor-not-allowed">
               Agregar a la lista
-            </a>
+            </button>
           </div>
         </div>
       </div>

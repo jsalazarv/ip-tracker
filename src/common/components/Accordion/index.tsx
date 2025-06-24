@@ -66,9 +66,7 @@ export default function Accordion({
             ? 'grid-rows-[1fr] opacity-100'
             : 'grid-rows-[0fr] opacity-0'
         }`}>
-        <div className="overflow-hidden">
-          <p className="px-5 pb-3">{children}</p>
-        </div>
+        <div className="overflow-hidden px-5 pb-3">{children}</div>
       </div>
     </div>
   );
