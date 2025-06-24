@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type AccordionProps = {
   children: React.ReactNode;
@@ -25,6 +26,7 @@ export default function Accordion({
   location,
   onClick,
 }: AccordionProps) {
+  const { t } = useTranslation();
   const [accordionOpen, setAccordionOpen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -51,14 +53,14 @@ export default function Accordion({
             <div className="grid grid-cols-2 flex-1 gap-4">
               <div>
                 <span className="text-sm text-slate-500 dark:text-slate-400">
-                  IP Address:
+                  {t('ipTracker.info.ipAddress')}:
                 </span>
                 <p className="font-medium text-sm">{title}</p>
               </div>
               {location && (
                 <div>
                   <span className="text-sm text-slate-500 dark:text-slate-400">
-                    Location:
+                    {t('ipTracker.info.location')}:
                   </span>
                   <p className="text-sm text-slate-600 dark:text-slate-300">
                     {location.flag_emoji} {location.city}, {location.country}

@@ -1,0 +1,55 @@
+{
+  "common": {
+    "search": "Buscar",
+    "delete": "Eliminar",
+    "close": "Cerrar"
+  },
+  "ipTracker": {
+    "title": "IP Tracker",
+    "finder": {
+      "placeholder": "Buscar dirección IP"
+    },
+    "info": {
+      "title": "Información de IP",
+      "ipAddress": "Dirección IP",
+      "location": "Ubicación",
+      "timezone": "Zona Horaria",
+      "isp": "ISP",
+      "type": "Tipo",
+      "ipType": "Tipo de IP",
+      "provider": "Proveedor (ISP)",
+      "countryCode": "Código de País",
+      "coordinates": "Coordenadas",
+      "security": {
+        "title": "Seguridad",
+        "proxy": "Proxy",
+        "tor": "Tor",
+        "vpn": "VPN",
+        "threatsDetected": "Amenazas Detectadas"
+      },
+      "yes": "Sí",
+      "no": "No"
+    },
+    "history": {
+      "title": "Historial de IPs",
+      "filterPlaceholder": "Filtrar por IP, ciudad o país...",
+      "empty": {
+        "noRecords": "No hay registros guardados aún",
+        "noResults": "No se encontraron registros que coincidan con la búsqueda",
+        "subtitle": "Puedes realizar una búsqueda para guardar un registro"
+      },
+      "deleteRecord": "Eliminar registro",
+      "threatWarning": "⚠️ Esta IP ha sido marcada como amenaza",
+      "details": {
+        "country": "País",
+        "region": "Región",
+        "city": "Ciudad",
+        "postalCode": "Código Postal",
+        "type": "Tipo",
+        "isp": "ISP",
+        "countryCode": "Código de País",
+        "coordinates": "Coordenadas"
+      }
+    }
+  }
+}
