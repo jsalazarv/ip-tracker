@@ -36,42 +36,48 @@ export default function IPTracker() {
   };
 
   return (
-    <div className="grid grid-cols-7 min-h-screen grid-rows-[auto_1fr]">
-      <div className="col-span-7 p-5 border-b border-slate-200 dark:border-slate-800">
-        <div className="grid grid-cols-4 gap-5">
-          <div className="col-span-2 md:col-span-1 order-1 md:order-1">
-            <div className="flex items-center h-full">
-              <h1>IP Tracker</h1>
+    <div className="flex flex-col min-h-screen overflow-hidden">
+      <div className="grow flex flex-col lg:flex-row">
+        <div className="w-full lg:w-2/5 flex flex-col mt-32">
+          <div
+            id="header"
+            className="fixed w-[inherit] top-0 bg-white dark:bg-slate-950 z-10 p-5 border-b border-slate-200 dark:border-slate-900">
+            <div className="grid grid-cols-4 gap-4">
+              <div className="col-span-2 flex-1">
+                <h1 className="text-2xl font-bold">IP Tracker</h1>
+              </div>
+              <div className="col-span-2 flex justify-end">
+                <ThemeToggle />
+              </div>
+              <div className="col-span-4">
+                <Finder key={finderKey} onSearch={handleSearch} />
+              </div>
             </div>
           </div>
-          <Finder key={finderKey} onSearch={handleSearch} />
-          <div className="col-span-2 md:col-span-1 order-2 md:order-3">
-            <div className="flex items-center justify-end h-full">
-              <ThemeToggle />
-            </div>
+
+          <div className="grow p-5 pt-6 overflow-y-auto">
+            {showIPInfo && (
+              <div className="mb-5">
+                <IPInfo
+                  data={data?.data}
+                  isLoading={isLoading}
+                  onClose={handleClose}
+                />
+              </div>
+            )}
+
+            <IPHistory onSelect={handleHistorySelect} />
           </div>
         </div>
-      </div>
-      <div className="col-span-7 md:col-span-3 p-5 flex-1 lg:max-h-screen">
-        {showIPInfo && (
-          <div className="mb-5">
-            <IPInfo
-              data={data?.data}
-              isLoading={isLoading}
-              onClose={handleClose}
-            />
-          </div>
-        )}
 
-        <IPHistory onSelect={handleHistorySelect} />
-      </div>
-      <div className="col-span-7 md:col-span-4 bg-slate-900 flex-1 lg:rounded-l-[2rem] min-h-[350px] lg:max-h-screen overflow-hidden">
-        <Map
-          coordinates={coordinates}
-          ip={ip}
-          error={error?.message}
-          centerOnUser={centerOnUser}
-        />
+        <div className="relative w-full lg:w-3/5 lg:fixed lg:right-0 lg:top-0 lg:bottom-0 min-h-[350px] overflow-hidden">
+          <Map
+            coordinates={coordinates}
+            ip={ip}
+            error={error?.message}
+            centerOnUser={centerOnUser}
+          />
+        </div>
       </div>
     </div>
   );
