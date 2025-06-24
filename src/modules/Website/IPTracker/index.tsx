@@ -1,12 +1,15 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useIP } from '@common/hooks/api/useIP';
 import Finder from './partials/Finder';
 import Map from './partials/Map';
 import IPInfo from './partials/IPInfo';
 import IPHistory from './partials/IPHistory';
 import ThemeToggle from '@common/components/ThemeToggle';
+import LanguageToggle from '@common/components/LanguageToggle';
 
 export default function IPTracker() {
+  const { t } = useTranslation();
   const { getIP } = useIP();
   const [searchIP, setSearchIP] = useState<string>();
   const [finderKey, setFinderKey] = useState(0);
@@ -44,9 +47,10 @@ export default function IPTracker() {
             className="fixed w-[inherit] top-0 bg-white dark:bg-slate-950 z-10 p-5 border-b border-slate-200 dark:border-slate-900">
             <div className="grid grid-cols-4 gap-4">
               <div className="col-span-2 flex-1">
-                <h1 className="text-2xl font-bold">IP Tracker</h1>
+                <h1 className="text-2xl font-bold">{t('ipTracker.title')}</h1>
               </div>
-              <div className="col-span-2 flex justify-end">
+              <div className="col-span-2 flex justify-end gap-2">
+                <LanguageToggle />
                 <ThemeToggle />
               </div>
               <div className="col-span-4">

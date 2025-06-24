@@ -1,5 +1,6 @@
 import { useIPRecords } from '@common/hooks/api/useIPRecords';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface IPData {
   ip: string;
@@ -43,6 +44,7 @@ interface IPInfoProps {
 }
 
 export default function IPInfo({ data, isLoading, onClose }: IPInfoProps) {
+  const { t } = useTranslation();
   const { records = [], saveRecord = () => {} } = useIPRecords();
 
   const existingRecord = useMemo(() => {
@@ -92,16 +94,16 @@ export default function IPInfo({ data, isLoading, onClose }: IPInfoProps) {
 
   return (
     <div className="space-y-3">
-      <h2 className="text-lg font-semibold">IP Information</h2>
+      <h2 className="text-lg font-semibold">{t('ipTracker.info.title')}</h2>
       <div className="bg-gradient-to-tr from-slate-100 to-slate-50 dark:from-slate-800/80 dark:to-slate-900 rounded-lg p-4 shadow-sm">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <span className="text-sm text-slate-500 dark:text-slate-400">
-              IP Address:
-            </span>
+            <h3 className="text-sm font-semibold mb-1">
+              {t('ipTracker.info.ipAddress')}
+            </h3>
             <p className="font-medium text-sm">{data.ip}</p>
             <span className="text-sm text-slate-500 dark:text-slate-400">
-              IP Type:
+              {t('ipTracker.info.ipType')}:
             </span>
             <p className="text-sm text-slate-600 dark:text-slate-300">
               {data.type}
@@ -110,14 +112,14 @@ export default function IPInfo({ data, isLoading, onClose }: IPInfoProps) {
 
           <div>
             <span className="text-sm text-slate-500 dark:text-slate-400">
-              Location:
+              {t('ipTracker.info.location')}:
             </span>
             <p className="font-medium text-sm flex items-center gap-2">
               <span>{data.country.flag.emoji}</span>
               <span>{[data.city.name, data.country.name].join(', ')}</span>
             </p>
             <span className="text-sm text-slate-500 dark:text-slate-400">
-              Country Code:
+              {t('ipTracker.info.countryCode')}:
             </span>
             <p className="font-medium text-sm text-slate-600 dark:text-slate-300">
               {data.country.code}
@@ -126,14 +128,14 @@ export default function IPInfo({ data, isLoading, onClose }: IPInfoProps) {
 
           <div>
             <span className="text-sm text-slate-500 dark:text-slate-400">
-              Provider (ISP):
+              {t('ipTracker.info.provider')}:
             </span>
             <p className="font-medium text-sm">{data.asn.organisation}</p>
           </div>
 
           <div>
             <span className="text-sm text-slate-500 dark:text-slate-400">
-              Coordinates:
+              {t('ipTracker.info.coordinates')}:
             </span>
             <p className="font-medium text-sm">
               lat: {data.location.latitude.toFixed(2)}° / lon:{' '}
@@ -147,9 +149,19 @@ export default function IPInfo({ data, isLoading, onClose }: IPInfoProps) {
           data.security.is_threat) && (
           <div className="mt-4 p-3 bg-red-50 dark:bg-red-900/30 rounded-lg">
             <span className="text-sm font-medium text-red-800 dark:text-red-300">
-              ⚠️ Amenazas Detectadas:
-              {data.security.is_tor && ' TOR'}
-              {data.security.is_proxy && ' Proxy'}
+              ⚠️ {t('ipTracker.info.security.threatsDetected')}:
+              <span className="font-semibold">
+                {t('ipTracker.info.security.tor')}:
+              </span>{' '}
+              {data.security.is_tor
+                ? t('ipTracker.info.yes')
+                : t('ipTracker.info.no')}
+              <span className="font-semibold">
+                {t('ipTracker.info.security.proxy')}:
+              </span>{' '}
+              {data.security.is_proxy
+                ? t('ipTracker.info.yes')
+                : t('ipTracker.info.no')}
               {data.security.is_threat && ' Threat'}
             </span>
           </div>

@@ -1,10 +1,12 @@
-import { FormEvent, useState } from 'react';
+import { useState, FormEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface FinderProps {
   onSearch: (ip: string) => void;
 }
 
 export default function Finder({ onSearch }: FinderProps) {
+  const { t } = useTranslation();
   const [ipAddress, setIpAddress] = useState('');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -39,7 +41,7 @@ export default function Finder({ onSearch }: FinderProps) {
             id="client"
             className="form-input w-full text-sm rounded-lg pr-10 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:border-blue-500 focus:ring-blue-500"
             type="text"
-            placeholder="Buscar dirección IP"
+            placeholder={t('ipTracker.finder.placeholder')}
             value={ipAddress}
             onChange={(e) => setIpAddress(e.target.value)}
             required

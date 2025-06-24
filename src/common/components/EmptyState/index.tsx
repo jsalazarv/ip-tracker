@@ -12,7 +12,7 @@ export const EmptyState = ({
   buttonText,
 }: IEmptyStateProps) => {
   return (
-    <div className="border-t border-b border-slate-200 dark:border-slate-700">
+    <div className="w-full border-t border-b border-slate-200 dark:border-slate-700">
       <div className="max-w-2xl m-auto mb-20 mt-16">
         <div className="text-center px-4">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-t from-slate-200 to-slate-100 dark:from-slate-700 dark:to-slate-800 mb-4">
