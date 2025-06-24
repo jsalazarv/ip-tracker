@@ -7,6 +7,7 @@ import IPInfo from './partials/IPInfo';
 import IPHistory from './partials/IPHistory';
 import ThemeToggle from '@common/components/ThemeToggle';
 import LanguageToggle from '@common/components/LanguageToggle';
+import ProjectInfo from '@common/components/ProjectInfo';
 
 export default function IPTracker() {
   const { t } = useTranslation();
@@ -50,6 +51,7 @@ export default function IPTracker() {
                 <h1 className="text-2xl font-bold">{t('ipTracker.title')}</h1>
               </div>
               <div className="col-span-2 flex justify-end gap-2">
+                <ProjectInfo />
                 <LanguageToggle />
                 <ThemeToggle />
               </div>
