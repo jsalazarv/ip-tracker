@@ -80,12 +80,12 @@ export default function Map({
   if (!mapCoordinates) return null;
 
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full rounded-[2rem] p-5 min-h-[350px] overflow-auto">
       <MapContainer
         center={[mapCoordinates.latitude, mapCoordinates.longitude]}
         zoom={coordinates ? 13 : 3}
         scrollWheelZoom={true}
-        className="h-full w-full">
+        className="h-full w-full overflow-hidden rounded-[2rem] min-h-[350px]">
         <MapUpdater
           coordinates={coordinates}
           userLocation={userLocation}

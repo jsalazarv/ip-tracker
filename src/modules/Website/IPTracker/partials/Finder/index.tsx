@@ -16,7 +16,7 @@ export default function Finder({ onSearch }: FinderProps) {
 
   return (
     <form
-      className="col-span-4 md:col-span-2 order-3 md:order-2"
+      className="col-span-4 md:col-span-2 order-3 md:order-2 w-full"
       onSubmit={handleSubmit}>
       <div className="space-y-4">
         <div>
