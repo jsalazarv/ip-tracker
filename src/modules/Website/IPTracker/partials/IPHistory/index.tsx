@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useIPRecords } from '@common/hooks/api/useIPRecords';
 import Accordion from '@common/components/Accordion';
+import { EmptyState } from '@common/components/EmptyState';
 
 interface IPHistoryProps {
   onSelect: (ip: string) => void;
@@ -121,12 +122,15 @@ export default function IPHistory({ onSelect }: IPHistoryProps) {
           ))}
         </div>
       ) : (
-        <div className="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-lg shadow-black/5">
-          <p className="text-slate-500 dark:text-slate-400 text-center">
-            {searchTerm
-              ? 'No se encontraron registros que coincidan con la búsqueda'
-              : 'No hay registros guardados aún'}
-          </p>
+        <div className="p-6 h-full flex items-center justify-center">
+          <EmptyState
+            title={
+              searchTerm
+                ? 'No se encontraron registros que coincidan con la búsqueda'
+                : 'No hay registros guardados aún'
+            }
+            subtitle="Puedes realizar una búsqueda para guardar un registro"
+          />
         </div>
       )}
     </div>
