@@ -4,6 +4,35 @@
     "delete": "Eliminar",
     "close": "Cerrar"
   },
+  "projectInfo": {
+    "title": "Acerca del Proyecto",
+    "description": "Plataforma para consultar información de direcciones IP y almacenar un histórico de búsquedas.",
+    "requirements": {
+      "title": "Requerimientos",
+      "responsive": "Sitio 100% responsivo",
+      "frontend": "Framework o librería front-end a elección",
+      "database": "Base de datos local o en la nube",
+      "solution": "Solución libre según criterio"
+    },
+    "features": {
+      "title": "Funcionalidades",
+      "search": "Consulta de IPs mediante cuadro de texto",
+      "table": "Tabla con historial de búsquedas",
+      "filter": "Filtrado de registros",
+      "delete": "Eliminación de registros",
+      "duplicate": "Alerta de IPs duplicadas",
+      "data": "7 campos relevantes de información",
+      "map": "Visualización en mapa (extra)"
+    },
+    "tech": {
+      "title": "Implementación",
+      "frontend": "React + TypeScript",
+      "styles": "Tailwind CSS",
+      "database": "Supabase",
+      "api": "IP Geolocation API",
+      "map": "Leaflet Maps"
+    }
+  },
   "ipTracker": {
     "title": "IP Tracker",
     "finder": {

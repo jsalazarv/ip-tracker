@@ -4,6 +4,35 @@
     "delete": "Delete",
     "close": "Close"
   },
+  "projectInfo": {
+    "title": "About Project",
+    "description": "Platform for querying IP address information and storing search history.",
+    "requirements": {
+      "title": "Requirements",
+      "responsive": "100% responsive site",
+      "frontend": "Frontend framework/library of choice",
+      "database": "Local or cloud database",
+      "solution": "Free solution according to criteria"
+    },
+    "features": {
+      "title": "Features",
+      "search": "IP lookup via text input",
+      "table": "Search history table",
+      "filter": "Record filtering",
+      "delete": "Record deletion",
+      "duplicate": "Duplicate IP alerts",
+      "data": "7 relevant information fields",
+      "map": "Map visualization (extra)"
+    },
+    "tech": {
+      "title": "Implementation",
+      "frontend": "React + TypeScript",
+      "styles": "Tailwind CSS",
+      "database": "Supabase",
+      "api": "IP Geolocation API",
+      "map": "Leaflet Maps"
+    }
+  },
   "ipTracker": {
     "title": "IP Tracker",
     "finder": {
