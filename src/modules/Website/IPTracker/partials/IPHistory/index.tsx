@@ -27,7 +27,7 @@ export default function IPHistory({ onSelect }: IPHistoryProps) {
         <h2 className="text-lg font-semibold">Historial de IPs</h2>
         <input
           type="text"
-          placeholder="Buscar IP, ciudad o país..."
+          placeholder="Filtrar por IP, ciudad o país..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="form-input w-48 text-sm rounded-lg border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:border-blue-500 focus:ring-blue-500"
